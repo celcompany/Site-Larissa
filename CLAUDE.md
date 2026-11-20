@@ -20,8 +20,15 @@ Diferencial: Vencedora Beleza Experience 2024 — Novos Talentos Penteado. Maqui
 
 ## Preservar sempre (nunca apagar/renomear)
 - Google Tag Manager **GTM-NXC87NT7** (script no `<head>` + `<noscript>` logo após `<body>`)
-- `google0e805388159113cd.html` (verificação Search Console) — deve continuar servido na raiz
-- Pasta `fotos/` (fotos originais; versões otimizadas podem ser derivadas, sem remover as originais)
+- `public/google0e805388159113cd.html` (verificação Search Console) — servido na raiz do domínio
+- Pasta `public/fotos/` (fotos originais, URLs `/fotos/...`; versões otimizadas podem ser derivadas, sem remover as originais)
+
+## Estrutura
+- Dados centrais (NAP, serviços, regiões, mensagens de WhatsApp): `src/lib/site.ts`
+- Schema JSON-LD: `src/lib/schema.ts` · Metadata por página (canonical obrigatório): `src/lib/seo.ts` → `pageMetadata()`
+- Ao criar uma página, incluí-la em `LIVE_ROUTES` de `src/app/sitemap.ts`
+- `index.html` na raiz = site antigo, apenas referência (não é servido pelo Next)
+- Deploy: Vercel, automático pela branch `main` — não dar push na main até a Home estar pronta
 - Tags existentes G-F38VJ77VVM (GA4) e AW-18449298619 (Ads): não remover sem aprovação explícita
 
 ## Modo de trabalho
