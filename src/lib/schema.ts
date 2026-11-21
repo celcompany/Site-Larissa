@@ -86,6 +86,16 @@ export const serviceSchema = (opts: { name: string; path: string; description: s
   areaServed,
 });
 
+export const faqSchema = (items: { q: string; a: string }[]) => ({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: items.map((i) => ({
+    "@type": "Question",
+    name: i.q,
+    acceptedAnswer: { "@type": "Answer", text: i.a },
+  })),
+});
+
 export const breadcrumbSchema = (items: { name: string; path: string }[]) => ({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",

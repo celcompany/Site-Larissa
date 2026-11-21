@@ -23,6 +23,9 @@ Diferencial: Vencedora Beleza Experience 2024 — Novos Talentos Penteado. Maqui
 - `public/google0e805388159113cd.html` (verificação Search Console) — servido na raiz do domínio
 - Pasta `public/fotos/` (fotos originais, URLs `/fotos/...`; versões otimizadas podem ser derivadas, sem remover as originais)
 
+## Direção de arte
+- Toda página/seção visual segue a skill **`design-editorial`** (`.claude/skills/design-editorial/SKILL.md`) — carregá-la antes de criar ou alterar layout.
+
 ## Estrutura
 - Dados centrais (NAP, serviços, regiões, mensagens de WhatsApp): `src/lib/site.ts`
 - Schema JSON-LD: `src/lib/schema.ts` · Metadata por página (canonical obrigatório): `src/lib/seo.ts` → `pageMetadata()`

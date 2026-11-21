@@ -12,7 +12,7 @@ export default function Footer() {
             <p className="text-sm text-stone-400">
               Penteado e maquiagem a domicílio em São Paulo — Zonas Sul, Oeste e Centro. Atendimento em residências, hotéis e espaços de eventos.
             </p>
-            <p className="text-xs text-brand-gold">🏆 Vencedora Beleza Experience 2024</p>
+            <p className="text-[11px] uppercase tracking-[0.2em] text-brand-gold">Vencedora Beleza Experience 2024</p>
           </div>
 
           <nav aria-label="Serviços">

@@ -11,7 +11,7 @@ function Dropdown({ label, items }: { label: string; items: { href: string; labe
         <span aria-hidden="true" className="text-[10px]">▾</span>
       </button>
       <div className="invisible absolute left-1/2 top-full z-50 w-60 -translate-x-1/2 pt-2 opacity-0 transition-all duration-200 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
-        <ul className="rounded-xl border border-brand-sand bg-white p-2 shadow-xl">
+        <ul className="rounded-sm border border-stone-200 bg-white p-2 shadow-sm">
           {items.map((item) => (
             <li key={item.href}>
               <Link href={item.href} className="block rounded-lg px-3 py-2 text-sm text-stone-700 hover:bg-brand-sand hover:text-stone-900">
@@ -63,7 +63,7 @@ export default function Header() {
             href={waLink()}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden items-center justify-center rounded-full bg-brand-dark px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-white shadow-sm transition-colors duration-300 hover:bg-brand-gold sm:inline-flex"
+            className="hidden items-center justify-center rounded-sm bg-brand-dark px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-white transition-colors duration-300 hover:bg-brand-bronze sm:inline-flex"
           >
             Agendar Horário
           </a>
