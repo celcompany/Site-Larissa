@@ -143,6 +143,57 @@ export function CtaBlock({
   );
 }
 
+/** Lista tipográfica de links para serviços. */
+export function ServiceLinks({ items }: { items: { href: string; label: string }[] }) {
+  return (
+    <ul className="mx-auto mt-14 grid max-w-4xl gap-x-16 sm:grid-cols-2 lg:mt-16">
+      {items.map((o, i) => (
+        <li key={o.href} className="border-t border-stone-400/60">
+          <Link href={o.href} className="group grid grid-cols-[2.25rem_1fr_auto] items-center gap-x-4 py-6">
+            <span className="font-serif text-sm italic text-brand-bronze">{pad(i + 1)}</span>
+            <span className="font-serif text-2xl text-brand-dark transition-colors group-hover:text-brand-bronze">{o.label}</span>
+            <span aria-hidden="true" className="text-lg text-stone-400 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-brand-bronze">
+              →
+            </span>
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+/** Hero simples para páginas institucionais (sem foto lateral). */
+export function PageHero({
+  crumbs,
+  eyebrow,
+  title,
+  text,
+  children,
+}: {
+  crumbs: { name: string; path: string }[];
+  eyebrow: string;
+  title: Title;
+  text: string;
+  children?: React.ReactNode;
+}) {
+  return (
+    <section className="bg-brand-cream">
+      <div className={`${container} pb-20 pt-10 text-center lg:pb-24 lg:pt-16`}>
+        <div className="flex justify-center [&_ol]:justify-center">
+          <Breadcrumbs items={crumbs} />
+        </div>
+        <Eyebrow className="mt-10">{eyebrow}</Eyebrow>
+        <h1 className="mx-auto mt-6 max-w-4xl font-serif text-[2.5rem] font-normal leading-[1.05] tracking-tight text-brand-dark sm:text-6xl lg:text-[4.25rem]">
+          <TitleText title={title} emClass="text-brand-bronze" />
+        </h1>
+        <span aria-hidden="true" className="mx-auto mt-8 block h-px w-12 bg-brand-gold" />
+        <p className="mx-auto mt-8 max-w-xl text-[15px] leading-relaxed text-stone-600 sm:text-base">{text}</p>
+        {children}
+      </div>
+    </section>
+  );
+}
+
 /** Migalhas de pão visíveis (o Schema BreadcrumbList é emitido pela página). */
 export function Breadcrumbs({ items }: { items: { name: string; path: string }[] }) {
   return (

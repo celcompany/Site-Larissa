@@ -33,6 +33,13 @@ Diferencial: Vencedora Beleza Experience 2024 — Novos Talentos Penteado. Maqui
 - Domínio canônico: `https://larissamendeshairstylist.com.br` (sem www) em canonical, OG, sitemap e Schema.
 - Uma intenção de busca por página; H1 único; links internos entre serviços.
 
+## Conteúdo e regras comerciais
+- **NUNCA exibir preços ou valores monetários** em nenhuma página (percentual de sinal é permitido).
+- Regras oficiais (duração 2h30, reserva com contrato + sinal 30%, pagamento, preparo do cabelo, deslocamento) ficam em `POLICIES` (`src/lib/site.ts`). Reutilizar, não reescrever.
+- Pacotes de noiva (Essencial, Clássico, Completo, Luxo): `src/content/services.ts`. Teste com visagismo só a partir do Clássico.
+- A Larissa atua **exclusivamente com penteados**; maquiagem = maquiadoras parceiras.
+- FAQ oficial: `src/content/faq.ts`.
+
 ## Preservar sempre (nunca apagar/renomear)
 - Google Tag Manager **GTM-NXC87NT7** (script no `<head>` + `<noscript>` logo após `<body>`)
 - Tags G-F38VJ77VVM (GA4) e AW-18449298619 (Ads): não remover sem aprovação explícita

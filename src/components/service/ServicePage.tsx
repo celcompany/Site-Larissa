@@ -10,6 +10,7 @@ import {
   FaqList,
   NumberedList,
   SectionHeader,
+  ServiceLinks,
   TitleText,
   container,
   h2Class,
@@ -20,7 +21,7 @@ import { Arrow, ButtonLink, Eyebrow } from "@/components/ui";
 import { COVERAGE_TEXT, SERVICE_PAGES, type ServiceContent } from "@/content/services";
 import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/schema";
 import { pageMetadata } from "@/lib/seo";
-import { WA_MESSAGES, waLink } from "@/lib/site";
+import { WA_MESSAGES, waLink, waPackageMessage } from "@/lib/site";
 
 /*
  * Ritmo de fundos (skill design-editorial):
@@ -109,15 +110,58 @@ export default function ServicePage({ page }: { page: ServiceContent }) {
         </div>
       </section>
 
-      {/* INCLUSO / DIFERENCIAIS */}
-      <section className={`bg-brand-stone ${sectionPad}`}>
-        <div className={container}>
-          <SectionHeader eyebrow={page.included.eyebrow} intro={page.included.intro}>
-            <TitleText title={page.included.title} />
-          </SectionHeader>
-          <NumberedList items={page.included.items} />
-        </div>
-      </section>
+      {/* PACOTES (noivas) ou INCLUSO / DIFERENCIAIS */}
+      {page.packages ? (
+        <section id="pacotes" className={`scroll-mt-20 bg-brand-stone ${sectionPad}`}>
+          <div className={container}>
+            <SectionHeader eyebrow={page.packages.eyebrow} intro={page.packages.intro}>
+              <TitleText title={page.packages.title} />
+            </SectionHeader>
+            <ol className="mt-16 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:mt-20 lg:grid-cols-4">
+              {page.packages.items.map((pkg, i) => (
+                <li key={pkg.name} className="flex flex-col border-t border-brand-dark pt-8">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-brand-bronze">Pacote {pad(i + 1)}</p>
+                  <h3 className="mt-3 font-serif text-3xl text-brand-dark">{pkg.name}</h3>
+                  <p className="mt-2 font-serif text-lg italic leading-snug text-stone-600">{pkg.tagline}</p>
+                  <ul className="mt-6 flex-1 space-y-3 border-t border-stone-400/50 pt-6">
+                    {pkg.features.map((f) => {
+                      const excluded = f.startsWith("Não inclui");
+                      return (
+                        <li key={f} className={`grid grid-cols-[1rem_1fr] gap-2 text-[15px] leading-snug ${excluded ? "text-stone-500" : "text-stone-700"}`}>
+                          <span aria-hidden="true" className={excluded ? "text-stone-400" : "text-brand-bronze"}>
+                            {excluded ? "×" : "—"}
+                          </span>
+                          <span className={excluded ? "italic" : ""}>{f}</span>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                  <ButtonLink href={waLink(waPackageMessage(pkg.name))} variant="outline" allowWrap className="mt-8 w-full">
+                    Solicitar orçamento do Pacote {pkg.name}
+                  </ButtonLink>
+                </li>
+              ))}
+            </ol>
+            <div className="mx-auto mt-16 max-w-3xl border-t border-stone-400/50 pt-8">
+              <p className="text-center text-[11px] font-semibold uppercase tracking-[0.3em] text-brand-bronze">Observações</p>
+              <ul className="mt-5 space-y-3 text-center text-sm leading-relaxed text-stone-600">
+                {page.packages.notes.map((n) => (
+                  <li key={n}>{n}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+      ) : page.included ? (
+        <section className={`bg-brand-stone ${sectionPad}`}>
+          <div className={container}>
+            <SectionHeader eyebrow={page.included.eyebrow} intro={page.included.intro}>
+              <TitleText title={page.included.title} />
+            </SectionHeader>
+            <NumberedList items={page.included.items} />
+          </div>
+        </section>
+      ) : null}
 
       {/* PROCESSO (bloco escuro) */}
       <section id="como-funciona" className={`scroll-mt-20 bg-brand-graphite ${sectionPad}`}>
@@ -126,6 +170,16 @@ export default function ServicePage({ page }: { page: ServiceContent }) {
             <TitleText title={page.process.title} />
           </SectionHeader>
           <DarkSteps steps={page.process.steps} />
+          {page.process.facts && (
+            <dl className="mx-auto mt-10 grid max-w-5xl gap-8 border-y border-white/15 py-10 text-center sm:grid-cols-3">
+              {page.process.facts.map((f) => (
+                <div key={f.title}>
+                  <dt className="font-serif text-2xl italic text-brand-gold">{f.title}</dt>
+                  <dd className="mx-auto mt-2 max-w-xs text-sm leading-relaxed text-stone-400">{f.text}</dd>
+                </div>
+              ))}
+            </dl>
+          )}
           <div className="mt-12 text-center">
             <ButtonLink href={wa} variant="gold">
               {page.hero.cta}
@@ -172,17 +226,7 @@ export default function ServicePage({ page }: { page: ServiceContent }) {
           <SectionHeader eyebrow="Outros serviços">
             Também <em className="italic">a domicílio</em>
           </SectionHeader>
-          <ul className="mx-auto mt-14 grid max-w-4xl gap-x-16 sm:grid-cols-2 lg:mt-16">
-            {others.map((o, i) => (
-              <li key={o.slug} className="border-t border-stone-400/60">
-                <Link href={o.slug} className="group grid grid-cols-[2.25rem_1fr_auto] items-center gap-x-4 py-6">
-                  <span className="font-serif text-sm italic text-brand-bronze">{pad(i + 1)}</span>
-                  <span className="font-serif text-2xl text-brand-dark transition-colors group-hover:text-brand-bronze">{o.breadcrumb}</span>
-                  <Arrow className="text-lg text-stone-400 group-hover:text-brand-bronze" />
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <ServiceLinks items={others.map((o) => ({ href: o.slug, label: o.breadcrumb }))} />
         </div>
       </section>
 

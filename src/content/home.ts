@@ -10,7 +10,7 @@ export const HOME_SERVICES = {
     {
       service: svc("/penteado-noiva-a-domicilio-sp"),
       title: "Dia da Noiva",
-      lead: "Teste prévio, colocação de véu e grinalda e um cronograma calmo até a saída para a cerimônia.",
+      lead: "Quatro pacotes, do Essencial ao Luxo, com teste e visagismo, véu e acessórios e acompanhamento no evento.",
     },
     {
       service: svc("/penteado-madrinha-e-mae-sp"),
@@ -58,11 +58,11 @@ export const HOW_IT_WORKS = [
   },
   {
     title: "Disponibilidade e orçamento",
-    text: "Confirmamos a agenda e enviamos o orçamento personalizado, já com a taxa de deslocamento para o seu endereço.",
+    text: "Confirmamos a agenda e enviamos o orçamento personalizado. A data é reservada com contrato e sinal de 30%.",
   },
   {
-    title: "Teste prévio para noivas",
-    text: "Noivas fazem um teste antes do grande dia para definir penteado, acessórios, véu e todos os detalhes com calma.",
+    title: "Teste para noivas",
+    text: "A partir do Pacote Clássico, a noiva faz um teste com consultoria de visagismo para definir penteado, acessórios e véu com calma.",
   },
   {
     title: "No dia, o camarim vai até você",
@@ -83,8 +83,8 @@ export const HOME_FAQ = [
     a: "Atendemos a domicílio em toda a cidade de São Paulo e na Grande SP — em residências, hotéis e espaços de eventos. Consulte a disponibilidade para o seu endereço pelo WhatsApp.",
   },
   {
-    q: "Existe taxa de deslocamento?",
-    a: "Sim. A taxa de deslocamento é calculada de acordo com o endereço do atendimento e já vem informada no orçamento enviado pelo WhatsApp.",
+    q: "Como funciona o deslocamento?",
+    a: "Nos pacotes de noiva, o deslocamento para o teste e o dia da noiva está incluso em São Paulo Capital. Nos demais atendimentos, pré-wedding e cidades da Grande SP, o deslocamento é informado no orçamento.",
   },
   {
     q: "Vocês atendem em hotéis e espaços de eventos?",
@@ -96,7 +96,7 @@ export const HOME_FAQ = [
   },
   {
     q: "A noiva faz teste antes do casamento?",
-    a: "Sim. O pacote de noiva inclui teste prévio para definir o penteado, acessórios, véu e grinalda, garantindo tranquilidade no grande dia.",
+    a: "Nos Pacotes Clássico, Completo e Luxo, sim: o teste de penteado inclui consultoria de visagismo. O Pacote Essencial é focado no penteado do dia da noiva.",
   },
   {
     q: "É possível atender madrinhas e convidadas no mesmo local?",

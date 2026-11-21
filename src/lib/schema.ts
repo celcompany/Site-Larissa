@@ -91,6 +91,19 @@ export const serviceSchema = (opts: { name: string; path: string; description: s
   areaServed,
 });
 
+export const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": `${SITE.url}/sobre#larissa`,
+  name: "Larissa Mendes",
+  jobTitle: "Hairstylist especialista em penteados",
+  url: absoluteUrl("/sobre"),
+  image: absoluteUrl("/fotos/larissa-premio.jpeg"),
+  award: "Beleza Experience 2024 (Grupo O Boticário) — Melhor Penteado pelo voto popular",
+  worksFor: { "@id": BUSINESS_ID },
+  sameAs: [SITE.instagram],
+};
+
 export const faqSchema = (items: { q: string; a: string }[]) => ({
   "@context": "https://schema.org",
   "@type": "FAQPage",

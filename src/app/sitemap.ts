@@ -7,8 +7,8 @@ export const dynamic = "force-static";
 const LIVE_ROUTES: { path: string; priority: number }[] = [
   { path: "/", priority: 1 },
   ...SERVICES.map((s) => ({ path: s.slug, priority: 0.9 })),
-  // { path: "/sobre", priority: 0.6 },
-  // { path: "/perguntas-frequentes", priority: 0.6 },
+  { path: "/sobre", priority: 0.7 },
+  { path: "/perguntas-frequentes", priority: 0.7 },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

@@ -6,7 +6,7 @@ export const SITE = {
   phoneDisplay: "(11) 97084-5497",
   phoneE164: "+5511970845497",
   whatsappNumber: "5511970845497",
-  instagram: "https://www.instagram.com/lar1mendes/",
+  instagram: "https://instagram.com/lar1mendes",
   instagramHandle: "@lar1mendes",
   award: "Vencedora Beleza Experience 2024 - Novos Talentos Penteado",
   defaultTitle: "Penteado e Maquiagem a Domicílio em São Paulo e Grande SP | Larissa Mendes",
@@ -40,6 +40,25 @@ export const WA_MESSAGES = {
     "Olá, Larissa! Gostaria de um orçamento para produção de penteado para Ensaio/Shooting.\n\n📅 Data do ensaio: \n📍 Local: ",
   referencia:
     "Olá, Larissa! Tenho uma foto de referência de penteado e gostaria de saber se consegue fazer para o meu evento (estou enviando a foto em anexo).\n\n📅 Data do evento: \n📍 Local/Bairro: \n✨ Tipo de evento (Noiva/Madrinha/Festa): ",
+} as const;
+
+/** Mensagem de WhatsApp para orçamento de um pacote de noiva específico. */
+export const waPackageMessage = (packageName: string) =>
+  `Olá, Larissa! Sou noiva e gostaria de solicitar o orçamento do Pacote ${packageName}.\n\n💍 Data do casamento: \n📍 Local onde vou me arrumar: `;
+
+/**
+ * Regras oficiais de atendimento (fonte única para páginas e FAQ).
+ * NUNCA exibir preços ou valores monetários no site.
+ */
+export const POLICIES = {
+  brideDuration: "Em média 2h30min de produção para a noiva.",
+  booking: "A data é reservada mediante assinatura de contrato e pagamento de sinal de 30% do valor total.",
+  payment:
+    "Pagamento à vista via Pix, débito ou dinheiro. Também é possível parcelar no cartão de crédito, com acréscimo de juros.",
+  hairPrep:
+    "Os cabelos devem estar limpos (lavados somente com shampoo), secos e sem produtos pesados, como óleos ou máscaras.",
+  travel:
+    "Nos pacotes de noiva, o deslocamento para o teste e para o dia da noiva está incluso em São Paulo Capital. Pré-wedding e atendimentos nas demais cidades da Grande SP são sob consulta.",
 } as const;
 
 export type Service = {

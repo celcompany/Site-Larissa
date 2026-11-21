@@ -212,7 +212,7 @@ export function Coverage() {
       <div className={container}>
         <SectionHeader
           eyebrow="Onde atendemos"
-          intro="Levamos a produção completa até você, onde quer que seja o seu evento. A taxa de deslocamento é informada no orçamento, de acordo com o endereço."
+          intro="Levamos a produção completa até você, onde quer que seja o seu evento. Nos pacotes de noiva, o deslocamento em SP Capital já está incluso; nos demais casos, ele é informado no orçamento."
         >
           Em toda São Paulo <em className="italic">e Grande SP</em>
         </SectionHeader>

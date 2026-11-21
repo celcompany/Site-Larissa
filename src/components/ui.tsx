@@ -21,6 +21,8 @@ type ButtonProps = {
   children: React.ReactNode;
   variant?: "primary" | "outline" | "outlineLight" | "link" | "light" | "gold";
   external?: boolean;
+  /** Permite quebra de linha (botões em colunas estreitas). */
+  allowWrap?: boolean;
   className?: string;
 };
 
@@ -39,8 +41,8 @@ const styles = {
     "group inline-flex items-center gap-2 border-b border-stone-400 pb-1 text-[11px] font-semibold uppercase tracking-[0.25em] text-brand-dark transition-colors hover:border-brand-bronze hover:text-brand-bronze",
 };
 
-export function ButtonLink({ href, children, variant = "primary", external, className = "" }: ButtonProps) {
-  const wrap = variant === "link" ? "text-center leading-relaxed" : "whitespace-nowrap";
+export function ButtonLink({ href, children, variant = "primary", external, allowWrap, className = "" }: ButtonProps) {
+  const wrap = variant === "link" || allowWrap ? "text-center leading-relaxed" : "whitespace-nowrap";
   const cls = `${styles[variant]} ${wrap} ${className}`;
   const isExternal = external ?? href.startsWith("http");
   if (isExternal) {

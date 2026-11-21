@@ -1,8 +1,10 @@
 import type { Title } from "@/components/sections";
 import { PHOTOS, type Photo } from "@/lib/photos";
-import type { WA_MESSAGES } from "@/lib/site";
+import { POLICIES, type WA_MESSAGES } from "@/lib/site";
 
 type Item = { title: string; text: string };
+
+export type BridalPackage = { name: string; tagline: string; features: string[] };
 
 export type ServiceContent = {
   slug: string;
@@ -12,8 +14,11 @@ export type ServiceContent = {
   schema: { name: string; serviceType: string; description: string };
   hero: { eyebrow: string; h1: Title; text: string; cta: string; photo: Photo; caption: string };
   intro: { eyebrow: string; title: Title; paragraphs: string[]; photo: Photo };
-  included: { eyebrow: string; title: Title; intro: string; items: Item[] };
-  process: { eyebrow: string; title: Title; intro: string; steps: Item[] };
+  /** Lista de inclusos/diferenciais (usada quando não há pacotes). */
+  included?: { eyebrow: string; title: Title; intro: string; items: Item[] };
+  /** Pacotes reais (sem preços). Substitui `included`. */
+  packages?: { eyebrow: string; title: Title; intro: string; items: BridalPackage[]; notes: string[] };
+  process: { eyebrow: string; title: Title; intro: string; steps: Item[]; facts?: Item[] };
   gallery: { eyebrow: string; title: Title; photos: Photo[] };
   faq: { q: string; a: string }[];
   cta: { title: Title; text: string; label: string; photo: Photo };
@@ -31,43 +36,81 @@ export const SERVICE_PAGES: ServiceContent[] = [
     meta: {
       title: "Penteado de Noiva a Domicílio em São Paulo e Grande SP",
       description:
-        "Penteado de noiva a domicílio em São Paulo e Grande SP com teste prévio, colocação de véu e grinalda e cronograma no dia. Maquiagem com parceiras. Vencedora Beleza Experience 2024.",
+        "Penteado de noiva a domicílio em São Paulo e Grande SP. Pacotes Essencial, Clássico, Completo e Luxo, com teste de penteado e visagismo, véu e acessórios e acompanhamento no evento.",
     },
     schema: {
       name: "Penteado de Noiva a Domicílio",
       serviceType: "Penteado para noivas",
       description:
-        "Penteado de noiva a domicílio em São Paulo e Grande SP, com teste prévio, colocação de véu e grinalda e acompanhamento até a saída para a cerimônia.",
+        "Penteado de noiva a domicílio em São Paulo e Grande SP, com pacotes que incluem teste de penteado com consultoria de visagismo, colocação de acessórios e véu, assessoria para vestimenta e acompanhamento no evento.",
     },
     hero: {
       eyebrow: "Dia da Noiva · São Paulo e Grande SP",
       h1: ["Penteado de Noiva", "a Domicílio"],
-      text: "O penteado do seu casamento criado com calma, testado com antecedência e finalizado onde você estiver se arrumando — em casa, na suíte do hotel ou no espaço do evento, em toda São Paulo e Grande SP.",
+      text: "O penteado do seu casamento criado com calma e finalizado onde você estiver se arrumando — em casa, na suíte do hotel ou no espaço do evento, em toda São Paulo e Grande SP. Quatro pacotes para o seu estilo de celebração.",
       cta: "Receber orçamento de noiva",
       photo: PHOTOS.hero,
       caption: "Noivas · Making of a domicílio",
     },
     intro: {
       eyebrow: "O grande dia",
-      title: ["Tranquilidade do teste", "à saída", "para a cerimônia"],
+      title: ["Do primeiro contato", "à saída", "para a cerimônia"],
       paragraphs: [
-        "No dia do casamento, cada minuto conta. Por isso o atendimento de noiva vai além do penteado: ele começa semanas antes, no teste, e termina só quando você sai para a cerimônia com tudo no lugar.",
+        "No dia do casamento, cada minuto conta. Por isso o atendimento de noiva vai além do penteado: começa na assessoria pelo WhatsApp, passa pelo teste com consultoria de visagismo (a partir do Pacote Clássico) e termina só quando você sai para a cerimônia com tudo no lugar.",
         "O desenho do penteado é pensado a partir do vestido, do decote, do véu, dos acessórios e do estilo da celebração. O resultado é um penteado que parece seu, com técnica de fixação para durar da cerimônia ao fim da festa.",
         "E você não precisa se deslocar: toda a estrutura de um camarim profissional vai até onde você estiver se arrumando.",
       ],
       photo: PHOTOS.foto12,
     },
-    included: {
-      eyebrow: "O que está incluso",
-      title: ["Um atendimento", "completo", "para a noiva"],
-      intro: "Cada detalhe é combinado antes para que o dia do casamento seja leve.",
+    packages: {
+      eyebrow: "Pacotes de noiva",
+      title: ["Escolha a sua", "experiência"],
+      intro: "Quatro formatos de atendimento, da praticidade do dia da noiva à presença durante toda a celebração.",
       items: [
-        { title: "Teste prévio", text: "Encontro antes do casamento para definir o penteado, testar acessórios e alinhar cada detalhe com calma." },
-        { title: "Véu e grinalda", text: "Colocação e ajuste de véu, grinalda, tiara ou flores, com fixação segura para fotos, abraços e pista." },
-        { title: "Cronograma exclusivo", text: "Organização dos horários da noiva e do grupo para que todas fiquem prontas sem correria." },
-        { title: "Acompanhamento", text: "Atenção aos detalhes até a saída para a cerimônia, com retoques finais antes das fotos." },
-        { title: "Maquiagem com parceiras", text: "Maquiadoras parceiras de alto padrão para uma produção completa no mesmo local." },
-        { title: "Atendimento ao grupo", text: "Mãe, madrinhas e convidadas podem ser atendidas no mesmo espaço, no mesmo cronograma." },
+        {
+          name: "Essencial",
+          tagline: "Para noivas que preferem praticidade",
+          features: ["Penteado dia da Noiva", "Assessoria via WhatsApp", "Deslocamento incluso em SP Capital", "Não inclui teste de penteado"],
+        },
+        {
+          name: "Clássico",
+          tagline: "Para garantir o penteado dos sonhos",
+          features: [
+            "Teste de penteado com consultoria de visagismo",
+            "Penteado dia da Noiva",
+            "Assessoria via WhatsApp",
+            "Assessoria para vestimenta (suporte para vestido e fotos)",
+            "Deslocamento incluso em SP Capital",
+          ],
+        },
+        {
+          name: "Completo",
+          tagline: "Experiência noiva completa",
+          features: [
+            "Teste de penteado com consultoria de visagismo",
+            "Penteado pré-wedding",
+            "Penteado dia da Noiva",
+            "1 acompanhante inclusa (mãe ou madrinha)",
+            "Colocação de acessórios e véu",
+            "Assessoria para vestimenta (suporte para vestido e fotos)",
+            "Assessoria via WhatsApp",
+          ],
+        },
+        {
+          name: "Luxo",
+          tagline: "Presença e cuidado durante toda a celebração",
+          features: [
+            "Tudo do Pacote Completo",
+            "1 acompanhante adicional",
+            "Acompanhamento profissional no evento",
+            "Retoque pós-cerimônia ou troca de penteado para a recepção",
+          ],
+        },
+      ],
+      notes: [
+        "Opcional para os Pacotes Clássico e Completo: acompanhamento avulso no evento, com retoque pós-cerimônia ou troca de penteado para a recepção.",
+        "É possível adicionar penteados para madrinhas e convidadas, ou um penteado de pré-wedding avulso.",
+        POLICIES.travel,
       ],
     },
     process: {
@@ -75,10 +118,15 @@ export const SERVICE_PAGES: ServiceContent[] = [
       title: ["Do primeiro contato", "ao altar"],
       intro: "Um processo pensado para que você chegue ao grande dia sem nenhuma preocupação com cabelo.",
       steps: [
-        { title: "Reserva da data", text: "Pelo WhatsApp, envie a data do casamento e o local onde vai se arrumar. Confirmamos a disponibilidade e enviamos o orçamento." },
-        { title: "Referências e conversa", text: "Você compartilha fotos do vestido, referências de penteado e acessórios. Juntas, chegamos a uma proposta." },
-        { title: "Teste do penteado", text: "No teste, o penteado é executado, ajustado e aprovado — incluindo véu, grinalda e acessórios." },
-        { title: "O dia do casamento", text: "Chegamos pontualmente com estrutura completa e seguimos o cronograma até a sua saída para a cerimônia." },
+        { title: "Orçamento e reserva", text: "Pelo WhatsApp, envie a data do casamento e o local onde vai se arrumar. A data é reservada com contrato e sinal de 30%." },
+        { title: "Referências e assessoria", text: "Você compartilha fotos do vestido, referências de penteado e acessórios, com assessoria pelo WhatsApp até o grande dia." },
+        { title: "Teste com visagismo", text: "A partir do Pacote Clássico, o penteado é testado, ajustado e aprovado com consultoria de visagismo." },
+        { title: "O dia do casamento", text: "Chegamos pontualmente com estrutura completa. A produção da noiva leva em média 2h30min." },
+      ],
+      facts: [
+        { title: "2h30min", text: "Duração média da produção da noiva no dia do casamento." },
+        { title: "Contrato + sinal de 30%", text: "Forma de reserva da data, com segurança para você e para a agenda." },
+        { title: "Cabelo preparado", text: "Lavado somente com shampoo, seco e sem óleos, máscaras ou produtos pesados." },
       ],
     },
     gallery: {
@@ -87,12 +135,13 @@ export const SERVICE_PAGES: ServiceContent[] = [
       photos: [PHOTOS.foto12, PHOTOS.foto11, PHOTOS.foto10, PHOTOS.foto1, PHOTOS.foto7, PHOTOS.foto6],
     },
     faq: [
-      { q: "Com quanto tempo de antecedência devo reservar?", a: "Assim que tiver a data do casamento definida. Datas de alta temporada costumam ser reservadas com bastante antecedência, então vale consultar a disponibilidade o quanto antes pelo WhatsApp." },
-      { q: "O teste do penteado está incluso?", a: "Sim. O atendimento de noiva inclui teste prévio para definir o penteado, os acessórios, o véu e a grinalda antes do grande dia." },
-      { q: "Vocês atendem a noiva no hotel ou no espaço do casamento?", a: "Sim. O atendimento é a domicílio em toda São Paulo e Grande SP: em casa, em suítes de hotéis ou no espaço do evento." },
-      { q: "A mãe e as madrinhas podem se arrumar junto?", a: "Sim. O grupo pode ser atendido no mesmo local, com um cronograma organizado para que todas fiquem prontas no horário." },
-      { q: "Vocês fazem a maquiagem da noiva também?", a: "Sim, com maquiadoras parceiras de alto padrão, que atendem no mesmo local e horário do penteado." },
-      { q: "Existe taxa de deslocamento?", a: "Sim. A taxa é calculada de acordo com o endereço do atendimento e já vem informada no orçamento." },
+      { q: "Todos os pacotes incluem teste de penteado?", a: "Não. O teste de penteado com consultoria de visagismo está incluso a partir do Pacote Clássico. O Pacote Essencial é focado no penteado do dia da noiva." },
+      { q: "Quanto tempo dura a produção da noiva?", a: POLICIES.brideDuration },
+      { q: "Como faço para reservar a minha data?", a: POLICIES.booking },
+      { q: "Como devo preparar o cabelo?", a: POLICIES.hairPrep },
+      { q: "O deslocamento está incluso?", a: POLICIES.travel },
+      { q: "A mãe e as madrinhas podem se arrumar junto?", a: "Sim. O Pacote Completo inclui 1 acompanhante (mãe ou madrinha) e o Luxo inclui mais 1. Também é possível adicionar penteados para outras madrinhas e convidadas, no mesmo local." },
+      { q: "Vocês fazem a maquiagem da noiva também?", a: "A Larissa atua exclusivamente com penteados. Para a produção completa, a maquiagem é feita por maquiadoras parceiras, no mesmo local e horário." },
     ],
     cta: {
       title: ["O seu sim merece", "calma", "e precisão."],
@@ -319,7 +368,7 @@ export const SERVICE_PAGES: ServiceContent[] = [
     },
     faq: [
       { q: "Quem faz a maquiagem?", a: "A maquiagem é feita por maquiadoras parceiras de alto padrão, que trabalham em sintonia com o penteado da Larissa." },
-      { q: "Posso contratar só a maquiagem?", a: "O atendimento é pensado como produção completa, junto com o penteado. Consulte pelo WhatsApp a disponibilidade para o seu caso." },
+      { q: "Posso contratar só a maquiagem?", a: "A Larissa atua exclusivamente com penteados, e a maquiagem com as parceiras é oferecida como complemento, para quem deseja a produção completa. Consulte pelo WhatsApp." },
       { q: "Vocês fazem maquiagem para noivas?", a: "Sim. A maquiagem da noiva pode ser incluída no atendimento de noiva, no mesmo local e cronograma do penteado." },
       { q: "Atendem maquiagem para grupos?", a: "Sim. Mães, madrinhas, formandas e convidadas podem fazer cabelo e maquiagem no mesmo espaço." },
       { q: "A maquiagem também é a domicílio?", a: "Sim. Toda a produção acontece em casa, no hotel ou no espaço do evento, em toda São Paulo e Grande SP." },
