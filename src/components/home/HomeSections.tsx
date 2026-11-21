@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Arrow, ButtonLink, Eyebrow } from "@/components/ui";
 import PortfolioCarousel from "@/components/home/PortfolioCarousel";
+import { CtaBlock, DarkSteps, FaqList, SectionHeader, container, h2Class, pad, sectionPad } from "@/components/sections";
 import { PHOTOS } from "@/lib/photos";
 import { WA_MESSAGES, waLink } from "@/lib/site";
 import { COVERAGE, HOME_FAQ, HOME_PORTFOLIO, HOME_SERVICES, HOW_IT_WORKS } from "@/content/home";
@@ -12,31 +13,8 @@ import { COVERAGE, HOME_FAQ, HOME_PORTFOLIO, HOME_SERVICES, HOW_IT_WORKS } from 
  * → Autoridade cream → Cobertura stone → FAQ sand → CTA grafite → Footer dark
  */
 
-const container = "mx-auto max-w-6xl px-5 sm:px-8";
-const section = "py-24 lg:py-32";
-const h2 = "font-serif text-[2.1rem] font-normal leading-[1.1] tracking-tight sm:text-5xl";
-const pad = (n: number) => String(n).padStart(2, "0");
-
-function SectionHeader({
-  eyebrow,
-  children,
-  intro,
-  onDark = false,
-}: {
-  eyebrow: string;
-  children: React.ReactNode;
-  intro?: string;
-  onDark?: boolean;
-}) {
-  return (
-    <div className="mx-auto max-w-2xl text-center">
-      <Eyebrow onDark={onDark}>{eyebrow}</Eyebrow>
-      <h2 className={`mt-5 ${h2} ${onDark ? "text-brand-cream" : "text-brand-dark"}`}>{children}</h2>
-      <span aria-hidden="true" className="mx-auto mt-7 block h-px w-12 bg-brand-gold" />
-      {intro && <p className={`mt-7 text-[15px] leading-relaxed ${onDark ? "text-stone-400" : "text-stone-600"}`}>{intro}</p>}
-    </div>
-  );
-}
+const section = sectionPad;
+const h2 = h2Class;
 
 /* ───────────────────────── HERO ───────────────────────── */
 export function Hero() {
@@ -166,17 +144,7 @@ export function HowItWorks() {
           O atendimento <em className="italic">a domicílio</em>, passo a passo
         </SectionHeader>
 
-        <ol className="mx-auto mt-16 grid max-w-5xl gap-x-16 sm:grid-cols-2 lg:mt-20">
-          {HOW_IT_WORKS.map((step, i) => (
-            <li key={step.title} className="grid grid-cols-[3.25rem_1fr] gap-x-4 border-t border-white/15 py-9">
-              <span className="font-serif text-4xl italic leading-none text-brand-gold">{pad(i + 1)}</span>
-              <div>
-                <h3 className="font-serif text-2xl text-brand-cream">{step.title}</h3>
-                <p className="mt-3 text-[15px] leading-relaxed text-stone-400">{step.text}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
+        <DarkSteps steps={HOW_IT_WORKS} />
 
         <div className="mt-12 text-center">
           <ButtonLink href={waLink()} variant="gold">
@@ -277,19 +245,7 @@ export function Faq() {
         <SectionHeader eyebrow="Dúvidas frequentes">
           Antes de <em className="italic">reservar</em>
         </SectionHeader>
-        <div className="mx-auto mt-14 max-w-3xl lg:mt-16">
-          {HOME_FAQ.map((item) => (
-            <details key={item.q} className="group border-t border-stone-300 last:border-b">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-6 [&::-webkit-details-marker]:hidden">
-                <h3 className="font-serif text-xl leading-snug text-brand-dark sm:text-2xl">{item.q}</h3>
-                <span aria-hidden="true" className="text-2xl leading-none text-brand-bronze transition-transform duration-300 group-open:rotate-45">
-                  +
-                </span>
-              </summary>
-              <p className="pb-7 pr-10 text-[15px] leading-relaxed text-stone-600">{item.a}</p>
-            </details>
-          ))}
-        </div>
+        <FaqList items={HOME_FAQ} />
         <div className="mt-12 text-center">
           <ButtonLink href="/perguntas-frequentes" variant="link">
             Todas as perguntas <Arrow />
@@ -303,37 +259,13 @@ export function Faq() {
 /* ───────────────────────── CTA FINAL ───────────────────────── */
 export function FinalCta() {
   return (
-    <section className={`bg-brand-graphite ${section}`}>
-      <div className={`${container} grid items-center gap-14 lg:grid-cols-2 lg:gap-20`}>
-        <div className="relative mx-auto aspect-[4/5] w-full max-w-xs overflow-hidden rounded-sm bg-stone-800 sm:max-w-sm lg:max-w-md">
-          <Image
-            src={PHOTOS.foto11.src}
-            alt={PHOTOS.foto11.alt}
-            fill
-            sizes="(min-width: 1024px) 448px, 384px"
-            className="object-cover"
-            placeholder="blur"
-          />
-        </div>
-        <div className="text-center lg:text-left">
-          <Eyebrow onDark>Agenda aberta</Eyebrow>
-          <h2 className="mt-5 font-serif text-[2.4rem] font-normal leading-[1.05] tracking-tight text-brand-cream sm:text-6xl">
-            Sua data merece <em className="italic text-brand-gold">calma</em> e precisão.
-          </h2>
-          <p className="mx-auto mt-6 max-w-md text-[15px] leading-relaxed text-stone-400 lg:mx-0">
-            As datas mais procuradas se esgotam com antecedência. Envie a data e o local do seu evento e receba a disponibilidade pelo
-            WhatsApp.
-          </p>
-          <div className="mt-10 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center lg:justify-start">
-            <ButtonLink href={waLink()} variant="gold">
-              Consultar minha data
-            </ButtonLink>
-            <ButtonLink href={waLink(WA_MESSAGES.noiva)} variant="outlineLight">
-              Sou noiva
-            </ButtonLink>
-          </div>
-        </div>
-      </div>
-    </section>
+    <CtaBlock
+      eyebrow="Agenda aberta"
+      title={["Sua data merece", "calma", "e precisão."]}
+      text="As datas mais procuradas se esgotam com antecedência. Envie a data e o local do seu evento e receba a disponibilidade pelo WhatsApp."
+      primary={{ href: waLink(), label: "Consultar minha data" }}
+      secondary={{ href: waLink(WA_MESSAGES.noiva), label: "Sou noiva" }}
+      photo={PHOTOS.foto11}
+    />
   );
 }
