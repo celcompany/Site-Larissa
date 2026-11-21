@@ -19,7 +19,7 @@ export type Photo = { src: StaticImageData; alt: string; caption: string };
 /** Fotos reais com alt otimizado para SEO local. Fonte única para todas as páginas. */
 export const PHOTOS = {
   hero: { src: hero, alt: "Noivas com penteado preso e acessório, produção de penteado e maquiagem a domicílio em São Paulo por Larissa Mendes", caption: "Noivas" },
-  larissaPremio: { src: larissaPremio, alt: "Hairstylist Larissa Mendes segurando o troféu do Prêmio Beleza Experience 2024, categoria Novos Talentos Penteado", caption: "Beleza Experience 2024" },
+  larissaPremio: { src: larissaPremio, alt: "Hairstylist Larissa Mendes segurando o troféu do Beleza Experience 2024 do Grupo O Boticário, categoria Melhor Penteado pelo voto popular", caption: "Beleza Experience 2024" },
   foto1: { src: foto1, alt: "Penteado preso texturizado com mechas onduladas soltas para madrinha de casamento em São Paulo", caption: "Preso texturizado" },
   foto2: { src: foto2, alt: "Rabo de cavalo alto polido feito a domicílio em suíte de hotel em São Paulo", caption: "Rabo alto polido" },
   foto3: { src: foto3, alt: "Convidada com penteado solto e vestido bordado, produção social a domicílio em São Paulo", caption: "Produção social" },

@@ -17,7 +17,10 @@ export default function Footer() {
             <p className="text-sm leading-relaxed text-stone-400">
               Penteado e maquiagem a domicílio em São Paulo e Grande SP.
             </p>
-            <p className="text-[11px] uppercase tracking-[0.2em] text-brand-gold">Vencedora Beleza Experience 2024</p>
+            <p className="text-[11px] uppercase leading-relaxed tracking-[0.2em] text-brand-gold">
+              Vencedora Beleza Experience 2024
+              <span className="block text-stone-500">Melhor Penteado · Voto popular</span>
+            </p>
           </div>
 
           <nav aria-label="Serviços">

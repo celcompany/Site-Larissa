@@ -99,7 +99,7 @@ export const personSchema = {
   jobTitle: "Hairstylist especialista em penteados",
   url: absoluteUrl("/sobre"),
   image: absoluteUrl("/fotos/larissa-premio.jpeg"),
-  award: "Beleza Experience 2024 (Grupo O Boticário) — Melhor Penteado pelo voto popular",
+  award: SITE.award,
   worksFor: { "@id": BUSINESS_ID },
   sameAs: [SITE.instagram],
 };

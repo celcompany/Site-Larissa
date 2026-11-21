@@ -3,7 +3,7 @@
 Site: https://larissamendeshairstylist.com.br
 Negócio: penteado e maquiagem **a domicílio** em São Paulo e Grande SP (noivas, madrinhas/mães, social, maquiagem, shooting).
 WhatsApp: +55 11 97084-5497 (`https://wa.me/5511970845497`) · Instagram: @lar1mendes
-Diferencial: Vencedora Beleza Experience 2024 — Novos Talentos Penteado. Maquiagem via maquiadoras parceiras.
+Diferencial: Vencedora do Beleza Experience 2024 (Grupo O Boticário) — categoria Melhor Penteado pelo voto popular (nome oficial; usar `SITE.award`). Maquiagem via maquiadoras parceiras.
 
 ## Stack (fixa)
 - Next.js (App Router) + TypeScript + Tailwind CSS 4, deploy na Vercel (páginas SSG/estáticas, sem `output: 'export'`)

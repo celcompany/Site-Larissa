@@ -40,7 +40,7 @@ export function Hero() {
             <span className="h-px w-10 bg-brand-gold" aria-hidden="true" />
             <p className="text-left text-[10px] font-medium uppercase leading-relaxed tracking-[0.15em] text-stone-500 sm:text-[11px] sm:tracking-[0.2em]">
               Vencedora Beleza Experience 2024
-              <span className="block text-stone-400">Novos Talentos · Penteado</span>
+              <span className="block text-stone-400">Melhor Penteado · Voto popular</span>
             </p>
           </div>
         </div>
@@ -189,7 +189,7 @@ export function Authority() {
               técnica de fixação impecável.
             </p>
             <blockquote className="border-y border-brand-gold/60 py-6 font-serif text-xl italic leading-snug text-brand-dark sm:text-2xl">
-              Vencedora do Prêmio Beleza Experience 2024 — Novos Talentos, categoria Penteados.
+              Vencedora do Beleza Experience 2024 (Grupo O Boticário) na categoria Melhor Penteado, pelo voto popular.
             </blockquote>
             <p>
               Hoje, essa mesma precisão vai até a sua casa, hotel ou espaço de eventos em São Paulo e Grande SP, com o apoio de

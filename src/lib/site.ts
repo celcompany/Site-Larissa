@@ -8,7 +8,7 @@ export const SITE = {
   whatsappNumber: "5511970845497",
   instagram: "https://instagram.com/lar1mendes",
   instagramHandle: "@lar1mendes",
-  award: "Vencedora Beleza Experience 2024 - Novos Talentos Penteado",
+  award: "Beleza Experience 2024 (Grupo O Boticário) — Melhor Penteado pelo voto popular",
   defaultTitle: "Penteado e Maquiagem a Domicílio em São Paulo e Grande SP | Larissa Mendes",
   defaultDescription:
     "Penteado e maquiagem a domicílio em São Paulo e Grande SP para noivas, madrinhas e eventos sociais. Atendimento em residências, hotéis e espaços de eventos. Vencedora do Prêmio Beleza Experience 2024.",
