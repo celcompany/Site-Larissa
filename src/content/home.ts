@@ -3,15 +3,15 @@ import { SERVICES } from "@/lib/site";
 
 const svc = (slug: string) => SERVICES.find((s) => s.slug === slug)!;
 
-/** Serviços na Home: Noivas em destaque + lista tipográfica. */
+/** Serviços na Home — todos listados juntos ao lado da foto. */
 export const HOME_SERVICES = {
-  featured: {
-    service: svc("/penteado-noiva-a-domicilio-sp"),
-    title: "Dia da Noiva",
-    lead: "Penteado de noiva a domicílio com teste prévio, colocação de véu e grinalda e um cronograma calmo até a saída para a cerimônia.",
-    photo: PHOTOS.foto12,
-  },
+  photo: PHOTOS.foto12,
   list: [
+    {
+      service: svc("/penteado-noiva-a-domicilio-sp"),
+      title: "Dia da Noiva",
+      lead: "Teste prévio, colocação de véu e grinalda e um cronograma calmo até a saída para a cerimônia.",
+    },
     {
       service: svc("/penteado-madrinha-e-mae-sp"),
       title: "Madrinhas e Mães",
@@ -35,8 +35,21 @@ export const HOME_SERVICES = {
   ],
 };
 
-/** Curadoria do portfólio na Home (ordem = composição editorial). */
-export const HOME_PORTFOLIO: Photo[] = [PHOTOS.foto10, PHOTOS.foto3, PHOTOS.foto1, PHOTOS.foto9, PHOTOS.foto6, PHOTOS.foto4];
+/** Carrossel do portfólio na Home (ordem = curadoria). */
+export const HOME_PORTFOLIO: Photo[] = [
+  PHOTOS.foto10,
+  PHOTOS.foto3,
+  PHOTOS.foto1,
+  PHOTOS.foto9,
+  PHOTOS.foto6,
+  PHOTOS.foto4,
+  PHOTOS.foto11,
+  PHOTOS.foto5,
+  PHOTOS.foto2,
+  PHOTOS.foto7,
+  PHOTOS.foto8,
+  PHOTOS.foto12,
+];
 
 export const HOW_IT_WORKS = [
   {
@@ -57,22 +70,17 @@ export const HOW_IT_WORKS = [
   },
 ];
 
-/**
- * DEPOIMENTOS — PLACEHOLDERS.
- * O index.html antigo não tinha depoimentos. Substituir por depoimentos reais
- * (com autorização das clientes) e trocar `placeholder` para false.
- * Não adicionar Schema de Review/AggregateRating com conteúdo fictício.
- */
-export const TESTIMONIALS = [
-  { quote: "[Depoimento real de uma noiva — substituir]", author: "[Nome da cliente]", context: "Noiva · [Bairro]", placeholder: true },
-  { quote: "[Depoimento real de uma madrinha ou mãe — substituir]", author: "[Nome da cliente]", context: "Madrinha · [Bairro]", placeholder: true },
-  { quote: "[Depoimento real de penteado social — substituir]", author: "[Nome da cliente]", context: "Formatura · [Bairro]", placeholder: true },
+/** Tipos de local atendidos (comunicação inclusiva: toda SP e Grande SP). */
+export const COVERAGE = [
+  { title: "Residências", text: "Na sua casa ou na casa da família, com conforto e privacidade para você e suas convidadas." },
+  { title: "Hotéis", text: "Nas suítes de hotéis, ideal para noivas e grupos que se arrumam perto do local da cerimônia." },
+  { title: "Espaços de eventos", text: "Nos camarins e salas de preparação de buffets, igrejas e espaços de casamento." },
 ];
 
 export const HOME_FAQ = [
   {
-    q: "Vocês atendem em quais regiões de São Paulo?",
-    a: "Atendemos a domicílio em toda a Zona Sul, Zona Oeste e Centro de São Paulo — bairros como Moema, Vila Mariana, Itaim Bibi, Pinheiros, Jardins, Vila Madalena, Higienópolis e Consolação. Outras localidades podem ser consultadas pelo WhatsApp.",
+    q: "Vocês atendem em quais regiões?",
+    a: "Atendemos a domicílio em toda a cidade de São Paulo e na Grande SP — em residências, hotéis e espaços de eventos. Consulte a disponibilidade para o seu endereço pelo WhatsApp.",
   },
   {
     q: "Existe taxa de deslocamento?",

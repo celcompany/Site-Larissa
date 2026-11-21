@@ -11,8 +11,10 @@ Referência: revistas de moda/casamento (Vogue Noiva, Harper's Bazaar, Martha St
 | Token | Hex | Uso |
 |---|---|---|
 | `brand-cream` | #FAF8F5 | Fundo principal (linho quente) |
-| `brand-sand` | #F3EFEA | Superfícies/blocos alternados, bem suaves |
-| `brand-dark` | #1C1917 | Texto principal (carvão — **nunca** `#000`/`text-black`) |
+| `brand-sand` | #F3EFEA | Seções alternadas (areia suave) |
+| `brand-stone` | #E7E1D9 | Seções alternadas (cinza-pedra quente, um tom mais denso) |
+| `brand-graphite` | #262321 | **Blocos escuros**: Header, "Como funciona", CTA final |
+| `brand-dark` | #1C1917 | Texto principal (carvão — **nunca** `#000`/`text-black`) e Footer |
 | `brand-muted` | #78716C | Texto secundário |
 | `brand-gold` | #C5A059 | Destaque **decorativo** (fios, numerais grandes, detalhes) |
 | `brand-bronze` | #8C6B3E | Destaque em **texto pequeno** (rótulos, links) — contraste AA |
@@ -26,13 +28,25 @@ Referência: revistas de moda/casamento (Vogue Noiva, Harper's Bazaar, Martha St
 - Rótulos/eyebrows: `text-[11px] uppercase tracking-[0.3em] font-semibold text-brand-bronze`.
 - Escala com contraste alto: H1 mobile `text-[2.5rem]` → desktop `text-7xl`; H2 `text-4xl` → `text-5xl`.
 
+## Contraste e ritmo de fundos (obrigatório)
+- O site **não** pode ficar branco/claro demais. **Nunca** colocar duas seções seguidas com o mesmo fundo claro.
+- **Header sempre grafite** (`bg-brand-graphite`), com logo `text-brand-cream`, links `text-stone-300` (hover `brand-gold`) e botão "Agendar" em destaque `bg-brand-gold text-brand-dark`. Dropdowns e menu mobile também grafite.
+- Alternar fundos: `brand-cream` → `brand-sand` → `brand-stone` → **bloco escuro `brand-graphite`** a cada 3–4 seções. Footer em `brand-dark`.
+- Ritmo de referência (Home): Header grafite → Hero cream → Serviços sand → Portfólio stone → Como funciona **grafite** → Autoridade cream → Cobertura stone → FAQ sand → CTA final **grafite** → Footer dark.
+- Em blocos escuros: títulos `text-brand-cream`, corpo `text-stone-400`, eyebrow `Eyebrow onDark` (gold), CTA `variant="gold"`/`"outlineLight"`, fios `border-white/15`.
+- Toda página interna deve ter pelo menos 1 bloco escuro intermediário além do CTA final.
+
 ## Layout
 - **Mobile-first** sempre: escrever as classes base para 360px e só depois `sm:`/`lg:`.
-- Respiro generoso: seções `py-24 lg:py-36`; blocos de texto com `max-w-xl`.
-- Composições **assimétricas** (grid de 12 colunas com 7/5, 5/7, deslocamentos `lg:mt-24`, imagens sobrepostas) onde fizer sentido.
+- Container padrão: `mx-auto max-w-6xl px-5 sm:px-8`. Respiro generoso: seções `py-24 lg:py-32`.
+- **Alinhamento limpo e centralizado**: cabeçalhos de seção (eyebrow + H2 + fio dourado + intro) centralizados com `max-w-2xl mx-auto text-center`. Grids de 2 colunas com `items-center` e colunas equilibradas. No mobile, textos de hero/CTA centralizados.
+- CTAs lado a lado devem ter a mesma altura (primário sólido + `outline`), nunca um botão ao lado de um link solto.
+- Assimetria só pontual e intencional; o conjunto deve parecer equilibrado e centralizado.
 - Fotos reais são protagonistas: grandes, com proporção retrato (`aspect-[3/4]`/`[4/5]`), cantos retos ou `rounded-sm`, sem molduras pesadas.
 - Separadores: fios finos (`h-px bg-stone-300`, `border-stone-200`), numerais em serif (`01`, `02`) e legendas em caixa alta.
-- Listas de serviços/regiões em formato **tipográfico** (linhas com fio + título serif + seta), não em cards.
+- Listas de serviços em formato **tipográfico** (linhas com fio + numeral + título serif + seta), não em cards.
+- Galerias: carrossel horizontal com scroll-snap (`PortfolioCarousel`), setas circulares finas e swipe no mobile.
+- Não exibir listas de bairros/zonas; comunicar "toda São Paulo e Grande SP".
 
 ## PROIBIDO (anti-visual genérico de IA)
 - Grids repetitivos de 3 cards iguais com ícone redondo no topo.

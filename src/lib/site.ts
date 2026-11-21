@@ -9,9 +9,9 @@ export const SITE = {
   instagram: "https://www.instagram.com/lar1mendes/",
   instagramHandle: "@lar1mendes",
   award: "Vencedora Beleza Experience 2024 - Novos Talentos Penteado",
-  defaultTitle: "Penteado e Maquiagem a Domicílio em São Paulo | Larissa Mendes",
+  defaultTitle: "Penteado e Maquiagem a Domicílio em São Paulo e Grande SP | Larissa Mendes",
   defaultDescription:
-    "Penteado e maquiagem a domicílio em São Paulo para noivas, madrinhas e eventos sociais. Atendimento nas Zonas Sul, Oeste e Centro. Vencedora do Prêmio Beleza Experience 2024.",
+    "Penteado e maquiagem a domicílio em São Paulo e Grande SP para noivas, madrinhas e eventos sociais. Atendimento em residências, hotéis e espaços de eventos. Vencedora do Prêmio Beleza Experience 2024.",
   ogImage: "/fotos/hero.jpeg",
   gtmId: "GTM-NXC87NT7",
   ga4Id: "G-F38VJ77VVM",
@@ -59,31 +59,22 @@ export const SERVICES: Service[] = [
 ];
 
 export type Region = {
-  slug: string;
   name: string;
   neighborhoods: string[];
 };
 
+/**
+ * Zonas e bairros estratégicos — USO EXCLUSIVO NO SCHEMA (areaServed).
+ * Não exibir esta lista visualmente; a comunicação do site é "toda São Paulo e Grande SP".
+ */
 export const REGIONS: Region[] = [
-  {
-    slug: "/regioes/zona-sul",
-    name: "Zona Sul",
-    neighborhoods: ["Moema", "Vila Mariana", "Brooklin", "Campo Belo", "Vila Olímpia", "Itaim Bibi", "Morumbi", "Paraíso"],
-  },
-  {
-    slug: "/regioes/zona-oeste",
-    name: "Zona Oeste",
-    neighborhoods: ["Pinheiros", "Jardins", "Vila Madalena", "Alto de Pinheiros", "Perdizes", "Pompeia", "Lapa", "Butantã"],
-  },
-  {
-    slug: "/regioes/centro",
-    name: "Centro",
-    neighborhoods: ["Higienópolis", "Consolação", "Bela Vista", "Santa Cecília", "República", "Liberdade"],
-  },
+  { name: "Zona Sul", neighborhoods: ["Moema", "Vila Mariana", "Brooklin", "Campo Belo", "Vila Olímpia", "Itaim Bibi", "Morumbi", "Paraíso"] },
+  { name: "Zona Oeste", neighborhoods: ["Pinheiros", "Jardins", "Vila Madalena", "Alto de Pinheiros", "Perdizes", "Pompeia", "Lapa", "Butantã"] },
+  { name: "Centro", neighborhoods: ["Higienópolis", "Consolação", "Bela Vista", "Santa Cecília", "República", "Liberdade"] },
 ];
 
 export const NAV_LINKS = [
-  { href: "/portfolio", label: "Portfólio" },
+  { href: "/#portfolio", label: "Portfólio" },
   { href: "/sobre", label: "Sobre" },
   { href: "/perguntas-frequentes", label: "Dúvidas" },
 ] as const;

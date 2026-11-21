@@ -7,8 +7,6 @@ export const dynamic = "force-static";
 const LIVE_ROUTES: { path: string; priority: number }[] = [
   { path: "/", priority: 1 },
   // ...SERVICES.map((s) => ({ path: s.slug, priority: 0.9 })),
-  // ...REGIONS.map((r) => ({ path: r.slug, priority: 0.8 })),
-  // { path: "/portfolio", priority: 0.6 },
   // { path: "/sobre", priority: 0.6 },
   // { path: "/perguntas-frequentes", priority: 0.6 },
 ];

@@ -1,5 +1,5 @@
 import JsonLd from "@/components/JsonLd";
-import { Authority, Faq, FinalCta, Hero, HowItWorks, Portfolio, Regions, Services, Testimonials } from "@/components/home/HomeSections";
+import { Authority, Coverage, Faq, FinalCta, Hero, HowItWorks, Portfolio, Services } from "@/components/home/HomeSections";
 import { HOME_FAQ } from "@/content/home";
 import { faqSchema } from "@/lib/schema";
 import { pageMetadata } from "@/lib/seo";
@@ -21,8 +21,7 @@ export default function HomePage() {
       <Portfolio />
       <HowItWorks />
       <Authority />
-      <Regions />
-      <Testimonials />
+      <Coverage />
       <Faq />
       <FinalCta />
     </>

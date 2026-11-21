@@ -3,10 +3,11 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { waLink } from "@/lib/site";
 
 type Item = { href: string; label: string };
 
-export default function MobileMenu({ services, regions, links }: { services: Item[]; regions: Item[]; links: Item[] }) {
+export default function MobileMenu({ services, links }: { services: Item[]; links: Item[] }) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
@@ -19,6 +20,9 @@ export default function MobileMenu({ services, regions, links }: { services: Ite
     };
   }, [open]);
 
+  const close = () => setOpen(false);
+  const item = "block py-2.5 font-serif text-2xl text-brand-cream";
+
   return (
     <div className="lg:hidden">
       <button
@@ -27,7 +31,7 @@ export default function MobileMenu({ services, regions, links }: { services: Ite
         aria-expanded={open}
         aria-controls="mobile-menu"
         aria-label={open ? "Fechar menu" : "Abrir menu"}
-        className="flex h-10 w-10 items-center justify-center rounded-full border border-stone-200 bg-white text-stone-800"
+        className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-brand-cream"
       >
         <span aria-hidden="true" className="text-lg leading-none">{open ? "✕" : "☰"}</span>
       </button>
@@ -36,32 +40,32 @@ export default function MobileMenu({ services, regions, links }: { services: Ite
         <nav
           id="mobile-menu"
           aria-label="Menu móvel"
-          className="fixed inset-x-0 bottom-0 top-20 z-40 overflow-y-auto border-t border-brand-sand bg-brand-cream px-6 py-8"
+          className="fixed inset-x-0 bottom-0 top-20 z-40 overflow-y-auto border-t border-white/10 bg-brand-graphite px-6 py-10 text-center"
         >
-          <p className="mb-2 text-xs font-bold uppercase tracking-widest text-brand-gold">Serviços</p>
-          <ul className="mb-6 space-y-1">
+          <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.3em] text-brand-gold">Serviços</p>
+          <ul className="mb-8">
             {services.map((i) => (
               <li key={i.href}>
-                <Link href={i.href} className="block py-2 text-base text-stone-800">{i.label}</Link>
+                <Link href={i.href} onClick={close} className={item}>{i.label}</Link>
               </li>
             ))}
           </ul>
-          <p className="mb-2 text-xs font-bold uppercase tracking-widest text-brand-gold">Regiões</p>
-          <ul className="mb-6 space-y-1">
-            {regions.map((i) => (
-              <li key={i.href}>
-                <Link href={i.href} className="block py-2 text-base text-stone-800">{i.label}</Link>
-              </li>
-            ))}
-          </ul>
-          <ul className="space-y-1 border-t border-brand-sand pt-4">
-            <li><Link href="/" className="block py-2 text-base text-stone-800">Início</Link></li>
+          <ul className="border-t border-white/10 pt-6">
+            <li><Link href="/" onClick={close} className={item}>Início</Link></li>
             {links.map((i) => (
               <li key={i.href}>
-                <Link href={i.href} className="block py-2 text-base text-stone-800">{i.label}</Link>
+                <Link href={i.href} onClick={close} className={item}>{i.label}</Link>
               </li>
             ))}
           </ul>
+          <a
+            href={waLink()}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-10 inline-flex items-center justify-center rounded-sm bg-brand-gold px-8 py-4 text-[11px] font-semibold uppercase tracking-[0.25em] text-brand-dark"
+          >
+            Agendar Horário
+          </a>
         </nav>
       )}
     </div>

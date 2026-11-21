@@ -9,9 +9,14 @@ const saoPaulo = {
   sameAs: "https://pt.wikipedia.org/wiki/S%C3%A3o_Paulo",
 };
 
-/** Áreas atendidas: cidade + zonas + bairros (sem endereço físico). */
+/** Áreas atendidas: cidade + Grande SP + zonas + bairros (sem endereço físico). */
 export const areaServed = [
   saoPaulo,
+  {
+    "@type": "AdministrativeArea",
+    name: "Grande São Paulo",
+    alternateName: "Região Metropolitana de São Paulo",
+  },
   ...REGIONS.map((r) => ({
     "@type": "AdministrativeArea",
     name: `${r.name} de São Paulo`,
@@ -36,7 +41,7 @@ export const businessSchema = {
   image: absoluteUrl(SITE.ogImage),
   logo: absoluteUrl(SITE.ogImage),
   description:
-    "Penteado e maquiagem a domicílio em São Paulo para noivas, madrinhas, mães, formandas e ensaios fotográficos. Atendimento em residências, hotéis e espaços de eventos.",
+    "Penteado e maquiagem a domicílio em São Paulo e Grande SP para noivas, madrinhas, mães, formandas e ensaios fotográficos. Atendimento em residências, hotéis e espaços de eventos.",
   telephone: SITE.phoneE164,
   priceRange: "$$",
   currenciesAccepted: "BRL",
